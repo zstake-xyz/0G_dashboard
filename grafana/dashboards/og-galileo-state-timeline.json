@@ -1,0 +1,293 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "0G Galileo Beacon Chain Block Signing Timeline",
+    "tags": ["cosmos", "0g", "galileo", "beacon", "timeline"],
+    "style": "dark",
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Beacon Chain Block Signing Timeline (Based on Previous Block)",
+        "type": "statetable",
+        "targets": [
+          {
+            "expr": "og_galileo_validator_beacon_block_signed{validator=\"validator1\"}",
+            "legendFormat": "Validator1 - Block {{block_height}}",
+            "refId": "A"
+          },
+          {
+            "expr": "og_galileo_validator_beacon_block_signed{validator=\"validator2\"}",
+            "legendFormat": "Validator2 - Block {{block_height}}",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "displayMode": "color-background",
+              "align": "auto"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "color": "red",
+                    "text": "Missed"
+                  },
+                  "1": {
+                    "color": "green",
+                    "text": "Signed"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "options": {
+          "showValue": "auto",
+          "sortBy": "Time",
+          "sortDesc": true
+        }
+      },
+      {
+        "id": 2,
+        "title": "Validator Status Timeline",
+        "type": "statetable",
+        "targets": [
+          {
+            "expr": "og_galileo_validator_status{validator=\"validator1\"}",
+            "legendFormat": "Validator1 Status",
+            "refId": "A"
+          },
+          {
+            "expr": "og_galileo_validator_status{validator=\"validator2\"}",
+            "legendFormat": "Validator2 Status",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "displayMode": "color-background",
+              "align": "auto"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "color": "red",
+                    "text": "Inactive"
+                  },
+                  "1": {
+                    "color": "green",
+                    "text": "Active"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 12
+        },
+        "options": {
+          "showValue": "auto",
+          "sortBy": "Time",
+          "sortDesc": true
+        }
+      },
+      {
+        "id": 3,
+        "title": "Beacon Chain Block Height Progression",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "og_galileo_validator_current_block_height",
+            "legendFormat": "Current Block Height",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "vis": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "short"
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 20
+        }
+      },
+      {
+        "id": 4,
+        "title": "Beacon Chain Signing Rate",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "rate(og_galileo_validator_beacon_block_signed{validator=\"validator1\"}[5m])",
+            "legendFormat": "Validator1 Signing Rate",
+            "refId": "A"
+          },
+          {
+            "expr": "rate(og_galileo_validator_beacon_block_signed{validator=\"validator2\"}[5m])",
+            "legendFormat": "Validator2 Signing Rate",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "vis": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "short"
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 28
+        }
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "templating": {
+      "list": []
+    },
+    "annotations": {
+      "list": []
+    },
+    "refresh": "5s",
+    "schemaVersion": 27,
+    "version": 0,
+    "links": []
+  }
+} 

@@ -1,0 +1,396 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "0G Galileo Beacon Chain Validator Monitoring",
+    "tags": ["cosmos", "0g", "galileo", "beacon", "validator"],
+    "style": "dark",
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Block Height",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "og_galileo_validator_block_height",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "basic"
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": 2,
+        "title": "Active Validators",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "og_galileo_validator_active_set",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "basic"
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 0
+        }
+      },
+      {
+        "id": 3,
+        "title": "Validator Status",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "og_galileo_validator_is_bonded{validator=\"validator1\"}",
+            "legendFormat": "Validator1 Bonded",
+            "refId": "A"
+          },
+          {
+            "expr": "og_galileo_validator_is_jailed{validator=\"validator1\"}",
+            "legendFormat": "Validator1 Jailed",
+            "refId": "B"
+          },
+          {
+            "expr": "og_galileo_validator_is_bonded{validator=\"validator2\"}",
+            "legendFormat": "Validator2 Bonded",
+            "refId": "C"
+          },
+          {
+            "expr": "og_galileo_validator_is_jailed{validator=\"validator2\"}",
+            "legendFormat": "Validator2 Jailed",
+            "refId": "D"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "basic"
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        }
+      },
+      {
+        "id": 4,
+        "title": "Missed Blocks",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "og_galileo_validator_missed_blocks{validator=\"validator1\"}",
+            "legendFormat": "Validator1 Missed Blocks",
+            "refId": "A"
+          },
+          {
+            "expr": "og_galileo_validator_missed_blocks{validator=\"validator2\"}",
+            "legendFormat": "Validator2 Missed Blocks",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "vis": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        }
+      },
+      {
+        "id": 5,
+        "title": "Consecutive Missed Blocks",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "og_galileo_validator_consecutive_missed_blocks{validator=\"validator1\"}",
+            "legendFormat": "Validator1 Consecutive Missed",
+            "refId": "A"
+          },
+          {
+            "expr": "og_galileo_validator_consecutive_missed_blocks{validator=\"validator2\"}",
+            "legendFormat": "Validator2 Consecutive Missed",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "vis": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        }
+      },
+      {
+        "id": 6,
+        "title": "Validator Tokens",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "og_galileo_validator_tokens{validator=\"validator1\"}",
+            "legendFormat": "Validator1 Tokens",
+            "refId": "A"
+          },
+          {
+            "expr": "og_galileo_validator_tokens{validator=\"validator2\"}",
+            "legendFormat": "Validator2 Tokens",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "basic"
+            },
+            "unit": "short"
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        }
+      },
+      {
+        "id": 7,
+        "title": "Validator Rank",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "og_galileo_validator_rank{validator=\"validator1\"}",
+            "legendFormat": "Validator1 Rank",
+            "refId": "A"
+          },
+          {
+            "expr": "og_galileo_validator_rank{validator=\"validator2\"}",
+            "legendFormat": "Validator2 Rank",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "basic"
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        }
+      },
+      {
+        "id": 8,
+        "title": "Beacon Chain Block Signing Status Timeline",
+        "type": "statetable",
+        "targets": [
+          {
+            "expr": "og_galileo_validator_beacon_block_signed{validator=\"validator1\"}",
+            "legendFormat": "Validator1 Block {{block_height}}",
+            "refId": "A"
+          },
+          {
+            "expr": "og_galileo_validator_beacon_block_signed{validator=\"validator2\"}",
+            "legendFormat": "Validator2 Block {{block_height}}",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "displayMode": "color-background",
+              "align": "auto"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "color": "red",
+                    "text": "Missed"
+                  },
+                  "1": {
+                    "color": "green",
+                    "text": "Signed"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 24
+        }
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "templating": {
+      "list": []
+    },
+    "annotations": {
+      "list": []
+    },
+    "refresh": "10s",
+    "schemaVersion": 27,
+    "version": 0,
+    "links": []
+  }
+} 
